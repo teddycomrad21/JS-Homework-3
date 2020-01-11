@@ -10,33 +10,33 @@
  */
 
 
-//  var counter = (function() {
-//     var num = 0;
+ var counter = (function() {
+    var num = 0;
   
-//     return function(n) {
-//         num = n === undefined ? num : n;
+    return function(n) {
+        num = n === undefined ? num : n;
   
-//         return num++;
-//     };
-//   }());
+        return num++;
+    };
+  }());
 
 
 
-// console.log(counter()); // 0
+console.log(counter()); // 0
 
-// console.log(counter()); // 1
+console.log(counter()); // 1
 
-// console.log(counter(100)); // 100
+console.log(counter(100)); // 100
 
-// console.log(counter()); // 101
+console.log(counter()); // 101
 
-// console.log(counter(500)); // 500
+console.log(counter(500)); // 500
 
-// console.log(counter()); // 501
+console.log(counter()); // 501
 
-// console.log(counter(0)); // 0
+console.log(counter(0)); // 0
 
-// console.log(counter()); // 1
+console.log(counter()); // 1
 
 /*
  * #2
@@ -50,61 +50,61 @@
  */
 
 
-// var counting = (function() {
-//     var num = 0;
+var counting = (function() {
+    var num = 0;
 
-//     return {
-//         value: (function() {
-//             return function(n) {
-//               return  num = n === undefined ? num : n;
-//             };
-//         }()),
+    return {
+        value: (function() {
+            return function(n) {
+              return  num = n === undefined ? num : n;
+            };
+        }()),
     
-//         increment: (function() {
-//             return function(n) {
-//                 num = n === undefined ? num : n;
-//                 return num++;
-//             };
-//         }()), 
+        increment: (function() {
+            return function(n) {
+                num = n === undefined ? num : n;
+                return num++;
+            };
+        }()), 
     
-//         decrement: (function() {
-//             return function(n) {
-//                 num = n === undefined ? num : n;
-//                 return num--;
-//             };
-//         }())
-//     }
-// }());
+        decrement: (function() {
+            return function(n) {
+                num = n === undefined ? num : n;
+                return num--;
+            };
+        }())
+    }
+}());
 
 
 
-// console.log(counting.value()); // 0
+console.log(counting.value()); // 0
 
-// counting.increment();
+counting.increment();
 
-// counting.increment();
+counting.increment();
 
-// counting.increment();
+counting.increment();
 
-// console.log(counting.value()); // 3
+console.log(counting.value()); // 3
 
-// counting.decrement();
+counting.decrement();
 
-// counting.decrement();
+counting.decrement();
 
-// console.log(counting.value()); // 1
+console.log(counting.value()); // 1
 
-// console.log(counting.value(100)); // 100
+console.log(counting.value(100)); // 100
 
-// counting.decrement();
+counting.decrement();
 
-// console.log(counting.value()); // 99
+console.log(counting.value()); // 99
 
-// console.log(counting.value(200)); // 200
+console.log(counting.value(200)); // 200
 
-// counting.increment();
+counting.increment();
 
-// console.log(counting.value()); // 201
+console.log(counting.value()); // 201
 
 /*
  * #3
@@ -120,25 +120,25 @@
 
 
 
-// function myPow(a, b, callback) {
-//     function pow(a, b) {
-//         if (b == 1) {
-//             return a;
-//         } else {
-//             return a * pow(a, b - 1);
-//         }
-//     }
-//     return callback(a, b, pow(a, b));
-// };
+function myPow(a, b, callback) {
+    function pow(a, b) {
+        if (b == 1) {
+            return a;
+        } else {
+            return a * pow(a, b - 1);
+        }
+    }
+    return callback(a, b, pow(a, b));
+};
 
-// function myPrint(a, b, res) {
-//     return `${a}^${b}=${res}`;
-// };
+function myPrint(a, b, res) {
+    return `${a}^${b}=${res}`;
+};
  
 
-// console.log(myPow(3, 4, myPrint)); // 3^4=81
+console.log(myPow(3, 4, myPrint)); // 3^4=81
 
-// console.log(myPow(2, 3, myPrint)); // 2^3=8
+console.log(myPow(2, 3, myPrint)); // 2^3=8
 
 /*
  * #4
@@ -174,57 +174,56 @@
  * - если сеттеру used присвоено значение 'used', ничего делать не нужно
  */
 
-// function fullInfo() {
-//     return `${this.name} ${this.model}, ${this.engine}cc, year ${this.year}, ${this.used}`;
-// };
+function fullInfo() {
+    return `${this.name} ${this.model}, ${this.engine}cc, year ${this.year}, ${this.used}`;
+};
   
-// let yearNow = new Date().getFullYear();
-// let car = {
-//     engine: 2000,
-//     model: 'GT86',
-//     name: 'Toyota',
-//     year: 2012,
-//     info: fullInfo,
-//     get used() {
-//       return this.year !== yearNow ? 'used' : 'new';
-//     },
-//     set used(value) {
-//       if (value === 'new' && this.year < yearNow) this.year = yearNow;
-//     }
-// };
-// let car2 = {
-//     engine: 2200,
-//     model: 'Freelander 2',
-//     name: 'Land Rover',
-//     year: 2020,
-//     info: fullInfo,
-//     get used() {
-//       return yearNow - this.year ? 'used' : 'new';
-//     },
-//     set used(value) {
-//       if (value === 'new' && this.year < yearNow) this.year = yearNow;
-//     }
-// };
+let yearNow = new Date().getFullYear();
+let car = {
+    engine: 2000,
+    model: 'GT86',
+    name: 'Toyota',
+    year: 2012,
+    info: fullInfo,
+    get used() {
+      return this.year !== yearNow ? 'used' : 'new';
+    },
+    set used(value) {
+      if (value === 'new' && this.year < yearNow) this.year = yearNow;
+    }
+};
+let car2 = {
+    engine: 2200,
+    model: 'Freelander 2',
+    name: 'Land Rover',
+    year: 2020,
+    info: fullInfo,
+    get used() {
+      return yearNow - this.year ? 'used' : 'new';
+    },
+    set used(value) {
+      if (value === 'new' && this.year < yearNow) this.year = yearNow;
+    }
+};
 
-// console.log(car2.info());
 
 // let yearNow = new Date().getFullYear(); // получить текущий год как число
 
-// console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2010, used
+console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2010, used
 
-// car.used = 'new';
+car.used = 'new';
 
-// console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2019, new -- год изменен
+console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2019, new -- год изменен
 
-// car.used = 'used';
+car.used = 'used';
 
-// console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2019, new -- изменения не выполняются
+console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2019, new -- изменения не выполняются
 
-// console.log(car2.info()); // Infinite FX50 AWD, 5000cc, year 2019, new
+console.log(car2.info()); // Infinite FX50 AWD, 5000cc, year 2019, new
 
-// car.used = 'used';
+car.used = 'used';
 
-// console.log(car2.info()); // Infinite FX50 AWD, 5000cc, year 2019, new -- изменения не выполняются
+console.log(car2.info()); // Infinite FX50 AWD, 5000cc, year 2019, new -- изменения не выполняются
 
 /*
  * #7
@@ -235,13 +234,13 @@
 
  
 
-// let list = [12, 23, 100, 34, 56, 9, 233];
+let list = [12, 23, 100, 34, 56, 9, 233];
 
-// function myMax(arr) {
-//     return Math.max.apply(null, arr);
-// };
+function myMax(arr) {
+    return Math.max.apply(null, arr);
+};
 
-// console.log(myMax(list)); // 233
+console.log(myMax(list)); // 233
 
 /*
  * #8
@@ -256,29 +255,29 @@
  */
 
 
-// function myMul(a, b) {
-//     return a * b;
-// };
+function myMul(a, b) {
+    return a * b;
+};
 
-// let myDouble = myMul.bind(null, 2);
+let myDouble = myMul.bind(null, 2);
 
 
 
-// console.log(myDouble(3)); // = myMul(2, 3) = 6
+console.log(myDouble(3)); // = myMul(2, 3) = 6
 
-// console.log(myDouble(4)); // = myMul(2, 4) = 8
+console.log(myDouble(4)); // = myMul(2, 4) = 8
 
-// console.log(myDouble(5)); // = myMul(2, 5) = 10
+console.log(myDouble(5)); // = myMul(2, 5) = 10
 
 // // аналогичным образом создайте функцию myTriple(n), которая утраивает принимающий параметр, возвращая результат.
 
-// let myTriple = myMul.bind(null, 3);
+let myTriple = myMul.bind(null, 3);
 
-// console.log(myTriple(3)); // = myMul(3, 3) = 9
+console.log(myTriple(3)); // = myMul(3, 3) = 9
 
-// console.log(myTriple(4)); // = myMul(3, 4) = 12
+console.log(myTriple(4)); // = myMul(3, 4) = 12
 
-// console.log(myTriple(5)); // = myMul(3, 5) = 15
+console.log(myTriple(5)); // = myMul(3, 5) = 15
 
 /*
  * #9
@@ -289,6 +288,20 @@
  * В реализации разрешено использование set.
  * Любые условные операторы – запрещены и объекты.
  */
+
+let notUniqNums = [1, 1, 2, 3, 4, 5, 6, 7];
+
+let notUniqStrings = ['Bob', 'Kate', 'Jhon', 'Tom', 'Jhon', 'Kate', 'Tom', 'Bob', 'Jhon', 'Tom'];
+
+let myUniq = (arr) => {
+  let set = new Set();
+
+  arr.forEach((val) => {
+    set.add(val);
+  });
+
+  return set;
+};
 
 
 // const myUniq = (arr) => {
@@ -304,9 +317,9 @@
 
 // let notUniqStrings = ['Bob', 'Kate', 'Jhon', 'Tom', 'Jhon', 'Kate', 'Tom', 'Bob', 'Jhon', 'Tom'];
 
-// console.log(myUniq(notUniqNums));
+console.log(myUniq(notUniqNums));
 
-// console.log(myUniq(notUniqStrings));
+console.log(myUniq(notUniqStrings));
 
 
 
